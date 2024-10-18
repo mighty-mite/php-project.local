@@ -1,16 +1,14 @@
 <?php
 
-$dsn = "mysql:host=mysql-8.2.local;port=3306;dbname=demo;charset=utf8mb4";
+require 'Database.php';
 
-$pdo = new PDO($dsn, 'root', '');
+$db = new Database();
 
-$statement = $pdo->prepare("select * from posts");
+$posts = $db->query("select * from posts")->fetchAll(PDO::FETCH_ASSOC);
 
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-var_dump($posts);
+foreach ($posts as $post) {
+  echo "<li>" . $post["title"] . "</li>";
+}
 
 // require 'functions.php';
 
