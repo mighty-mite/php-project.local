@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function dd($value)
 {
     echo "<pre>";
@@ -16,7 +18,7 @@ function urlIs($value)
 
 function authorize($condition, $status = Response::FORBIDDEN)
 {
-    if (! $condition) {
+    if (!$condition) {
         abort($status);
     }
 }
